@@ -1,0 +1,49 @@
+# Bytecode
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+venv/
+.env/
+.venv/
+
+# VS Code / IDEs
+.vscode/
+.idea/
+*.code-workspace
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+
+# Python cache
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Pytest
+.pytest_cache/
+
+# Pydantic compiled
+*.jsonschema.json
+
+# Env files
+.env
+.env.*
+
+# Coverage reports
+htmlcov/
+.coverage
+coverage.xml
+*.cover
+*.py,cover
+
+# FastAPI static/tmp
+staticfiles/
+tmp/
