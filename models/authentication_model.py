@@ -20,3 +20,6 @@ class UpdatePasswordValidate(BaseModel):
 class VerifyOTPValidate(BaseModel):
     email: str
     otp: str
+
+class TimePayload(BaseModel):
+    time: int
