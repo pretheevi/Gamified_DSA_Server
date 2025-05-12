@@ -23,3 +23,7 @@ class VerifyOTPValidate(BaseModel):
 
 class TimePayload(BaseModel):
     time: int
+    status: str
+
+class StatusCheck(BaseModel):
+    status: str
