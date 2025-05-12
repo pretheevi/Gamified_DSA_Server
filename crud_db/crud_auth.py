@@ -4,6 +4,10 @@ import string
 import resend
 from datetime import datetime, timedelta
 from query import create_connection_db
+from dotenv import load_dotenv
+import os
+
+load_dotenv() 
 #____________________________________________________________________________________________________
 
 class DBExecutor:
@@ -265,7 +269,7 @@ class EmailService:
         body = f"Your OTP is: {otp}\n\nPlease use this OTP to verify your email address.\n OTP is valid for 10 minutes.\n\nThank you!"
 
         # App password (generated)
-        app_password = "ojwt pqmj lirw vdzp"  # Replace with the app password you generated
+        app_password = os.getenv("APP_PASSWORD") # Replace with the app password you generated
 
         # Set up the MIME structure of the email
         msg = MIMEMultipart()
