@@ -24,6 +24,8 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 def verify_token(token: str = Depends(oauth2_scheme)):
     try:
+        print("🧪 Incoming token:", token[:15], "...")
+        print("🔐 SECRET_KEY in use:", SECRET_KEY[:5], "***", len(SECRET_KEY))
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         return payload
     except JWTError:
