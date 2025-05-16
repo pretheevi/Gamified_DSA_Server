@@ -35,17 +35,13 @@ def create_user_table():
     query = """
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            username TEXT UNIQUE NOT NULL,
+            username TEXT NOT NULL,
             email TEXT UNIQUE,
             password TEXT,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
     """
-    query2 = """
-            ALTER TABLE users
-            ALTER COLUMN username REMOVE CONSTRAIN username(UNIQUE);
-            """
     if execute_query(query):
         print("User table successfully created in SQLite database")
     else:
@@ -154,6 +150,7 @@ def setup_database():
     create_user_table()
     create_problems_table()
     create_user_problem_progress_table()
+    create_otp_table()
 
 #
 
@@ -219,14 +216,6 @@ def AlterTable():
     return None
 
 if __name__ == "__main__":
-    # setup_database()
-    # check_table_schema("users")
-    # check_table_schema("problems")
-    # check_table_schema("user_problem_progress")
-    # check_table_schema("otp_verification")
-    # create_otp_table()
-    view_table_data("users")
-    # testing()
-    # AlterTable()
+    setup_database()
     pass
 #____________________________________________________________________________________________________
