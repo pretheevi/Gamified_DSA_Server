@@ -215,7 +215,36 @@ def AlterTable():
         print("Error adding column to user_problem_progress table")
     return None
 
+
+from crud_db.problem_data import problem_data;
+
+def Insert_all_problem_data():
+    conn = create_connection_db()
+    cursor = conn.cursor()
+    insert_query = """
+        INSERT OR IGNORE INTO problems (title, slug, url, topic, difficulty, xp_value)
+        VALUES (?, ?, ?, ?, ?, ?);
+    """
+    try:
+        for p in problem_data:
+            cursor.execute(insert_query, (
+                p['title'], 
+                p['slug'], 
+                p['url'], 
+                p.get('topic'), 
+                p.get('difficulty'), 
+                p.get('xp_value', 10)
+            ))
+        conn.commit()
+        print(f"Inserted {len(problem_data)} problems into the database.")
+    except sqlite3.Error as e:
+        print(f"Error inserting problem data: {e}")
+    finally:
+        cursor.close()
+        conn.close()   
+        pass
+
 if __name__ == "__main__":
-    setup_database()
+    Insert_all_problem_data()
     pass
 #____________________________________________________________________________________________________
